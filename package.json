@@ -18,6 +18,8 @@
   "homepage": "https://github.com/brittnc/EmployeeTracker#readme",
   "dependencies": {
     "console.table": "^0.10.0",
+    "inquirer": "^8.2.0",
+    "mysql": "^2.18.1",
     "mysql2": "^2.3.2"
   },
   "devDependencies": {}
