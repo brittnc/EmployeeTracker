@@ -4,10 +4,10 @@ const consTable = require("console.table");
 const asciLogo = require("asciiart-logo");
 const colors = require("colors");
 
-// INTRO LOGO
+// LOGO
 connection.connect((err) => {
     if (err) throw err;
-    const longText = "By, Cody Ktestakis";
+    const longText = "By, Brittneylynn Crosby";
 
     console.log(
         asciLogo({
@@ -28,7 +28,7 @@ connection.connect((err) => {
     );
     promptUser();
 });
-// PROMPT QUESTION
+// PROMPT
 const promptUser = () => {
   inquirer
     .prompt([
@@ -102,7 +102,7 @@ const promptUser = () => {
     });
 };
 
-// VIEW ALL EMPLOYEES
+// EMPLOYEES
 const viewAllEmployees = () => {
   let sql = `SELECT * FROM employee`;
   connection.query(sql, (error, response) => {
@@ -115,7 +115,7 @@ const viewAllEmployees = () => {
   });
 };
 
-//VIEW ALL ROLES
+// ROLES
 const viewAllRoles = () => {
   const sql = `SELECT role.id, role.title, department.name AS department FROM role INNER JOIN department ON role.department_id = department.id`;
   connection.query(sql, (error, response) => {
@@ -129,7 +129,7 @@ const viewAllRoles = () => {
   });
 };
 
-//VIEW ALL DEPARTMENTS
+// DEPARTMENTS
 const viewAllDepartment = () => {
   let sql = `SELECT department.id AS id, department.name AS department FROM department`;
   connection.query(sql, (error, response) => {
@@ -141,7 +141,7 @@ const viewAllDepartment = () => {
   });
 };
 
-// VIEW ALL EMPLOYEES BY DEPARTMENT
+// EMPLOYEES BY DEPARTMENT
 const viewEmployeeByDepartment = () => {
   const sql = `SELECT employee.first_name, employee.last_name, department.name AS department FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id`;
   connection.query(sql, (err, response) => {
@@ -153,7 +153,7 @@ const viewEmployeeByDepartment = () => {
   });
 };
 
-//VIEW DEPARTMENT BY BUDGETS
+// DEPARTMENT BY BUDGETS
 const viewDepartmentBudget = () => {
   const sql = `SELECT department_id AS id, department.name AS department, SUM(salary) AS budget FROM role INNER JOIN department ON role.department_id = department.id GROUP BY role.department_id;`;
   connection.query(sql, (error, response) => {
@@ -165,7 +165,7 @@ const viewDepartmentBudget = () => {
   });
 };
 
-//UPDATE AN EMPLOYEE'S ROLE
+// EMPLOYEE'S ROLE
 const updateEmployeeRole = () => {
   let sql = `SELECT employee.id, employee.first_name, employee.last_name, role.id AS "role_id"
                   FROM employee, role, department WHERE department.id = role.department_id AND role.id = employee.role_id`;
@@ -228,7 +228,7 @@ const updateEmployeeRole = () => {
   });
 };
 
-//UPDATE AN EMPLOYEE'S MANAGER
+// EMPLOYEE MANAGER
 const updateEmployeeManager = () => {
   let sql = `SELECT employee.id, employee.first_name, employee.last_name, employee.manager_id FROM employee`;
   connection.query(sql, (error, response) => {
@@ -282,7 +282,7 @@ const updateEmployeeManager = () => {
   });
 };
 
-// ADD A NEW EMPLOYEE
+// ADD EMPLOYEE
 const addEmployee = () => {
   inquirer
     .prompt([
@@ -347,7 +347,7 @@ const addEmployee = () => {
     });
 };
 
-//ADD A NEW DEPARTMENT
+// NEW DEPARTMENT
 const addDepartment = () => {
   inquirer
     .prompt([
@@ -367,7 +367,7 @@ const addDepartment = () => {
     });
 };
 
-//ADD A NEW ROLE
+// NEW ROLE
 const addRole = () => {
   const sql = `SELECT * FROM department`;
   connection.query(sql, (error, response) => {
@@ -423,7 +423,7 @@ const addRole = () => {
   });
 };
 
-//DELETE AN EMPLOYEE
+// DELETE EMPLOYEE
 const removeEmployee = () => {
   let sql = `SELECT employee.id, employee.first_name, employee.last_name FROM employee`;
 
@@ -465,7 +465,7 @@ const removeEmployee = () => {
   });
 };
 
-//DELETE AN ROLE
+// DELETE ROLE
 const removeRole = () => {
   let sql = `SELECT role.id, role.title FROM role`;
   connection.query(sql, (error, response) => {
@@ -500,7 +500,7 @@ const removeRole = () => {
   });
 };
 
-//DELETE AN DEPARTMENT
+// DELETE DEPARTMENT
 const removeDepartment = () => {
   let sql = `SELECT department.id, department.name FROM department`;
   connection.query(sql, (error, response) => {
