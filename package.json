@@ -20,7 +20,8 @@
     "asciiart-logo": "^0.2.6",
     "colors": "^1.4.0",
     "console.table": "^0.10.0",
-    "inquirer": "^8.2.0"
+    "inquirer": "^8.2.0",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {}
 }
